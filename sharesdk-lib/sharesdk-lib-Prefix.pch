@@ -4,4 +4,8 @@
 
 #ifdef __OBJC__
 	#import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+
+	#import "shareSDKDefines.h"
+	#import	"shareSDKConstants.h"
 #endif

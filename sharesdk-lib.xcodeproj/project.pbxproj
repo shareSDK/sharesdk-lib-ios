@@ -8,9 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		1349E3E7167E7CBB00183059 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1349E3E6167E7CBB00183059 /* Foundation.framework */; };
-		1349E3EC167E7CBB00183059 /* sharesdk_lib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1349E3EB167E7CBB00183059 /* sharesdk_lib.h */; };
-		1349E3EE167E7CBB00183059 /* sharesdk_lib.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E3ED167E7CBB00183059 /* sharesdk_lib.m */; };
+		1349E3FF167E7DD300183059 /* SSActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E3FD167E7DA400183059 /* SSActivityViewController.m */; };
+		1349E404167E7E1300183059 /* shareSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E402167E7E1000183059 /* shareSDKConstants.m */; };
+		1349E40B167E7E7D00183059 /* AlertUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E407167E7E7D00183059 /* AlertUtility.m */; };
+		1349E414167E7FEF00183059 /* ShareSDKTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E411167E7FEF00183059 /* ShareSDKTracker.m */; };
+		1349E41A167E80C700183059 /* SSWebServiceConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E418167E80C700183059 /* SSWebServiceConnector.m */; };
+		1349E41E167E873300183059 /* ShareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E41D167E873300183059 /* ShareSDK.m */; };
+		1349E420167E87B900183059 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1349E41F167E87B800183059 /* UIKit.framework */; };
+		1349E427167E87F000183059 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1349E41F167E87B800183059 /* UIKit.framework */; };
+		1349E428167E87F000183059 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1349E3E6167E7CBB00183059 /* Foundation.framework */; };
+		1349E42A167E87F000183059 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1349E429167E87F000183059 /* CoreGraphics.framework */; };
+		1349E430167E87F000183059 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1349E42E167E87F000183059 /* InfoPlist.strings */; };
+		1349E432167E87F000183059 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E431167E87F000183059 /* main.m */; };
+		1349E436167E87F000183059 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E435167E87F000183059 /* AppDelegate.m */; };
+		1349E438167E87F000183059 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1349E437167E87F000183059 /* Default.png */; };
+		1349E43A167E87F000183059 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1349E439167E87F000183059 /* Default@2x.png */; };
+		1349E43C167E87F000183059 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1349E43B167E87F000183059 /* Default-568h@2x.png */; };
+		1349E43F167E87F000183059 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1349E43E167E87F000183059 /* ViewController.m */; };
+		1349E442167E87F000183059 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1349E440167E87F000183059 /* ViewController.xib */; };
+		1349E448167E881400183059 /* libsharesdk-lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1349E3E3167E7CBB00183059 /* libsharesdk-lib.a */; };
+		1349E44A167E8CAD00183059 /* Sharing.png in Resources */ = {isa = PBXBuildFile; fileRef = 1349E449167E8CAD00183059 /* Sharing.png */; };
+		1349E44D167E8F3A00183059 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1349E44C167E8F3A00183059 /* Icon.png */; };
+		1349E44F167E8F3E00183059 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1349E44E167E8F3E00183059 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1349E446167E881000183059 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1349E3DA167E7CBB00183059 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1349E3E2167E7CBB00183059;
+			remoteInfo = "sharesdk-lib";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1349E3E1167E7CBB00183059 /* CopyFiles */ = {
@@ -19,7 +49,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				1349E3EC167E7CBB00183059 /* sharesdk_lib.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -29,8 +58,39 @@
 		1349E3E3167E7CBB00183059 /* libsharesdk-lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libsharesdk-lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1349E3E6167E7CBB00183059 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1349E3EA167E7CBB00183059 /* sharesdk-lib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sharesdk-lib-Prefix.pch"; sourceTree = "<group>"; };
-		1349E3EB167E7CBB00183059 /* sharesdk_lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sharesdk_lib.h; sourceTree = "<group>"; };
-		1349E3ED167E7CBB00183059 /* sharesdk_lib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sharesdk_lib.m; sourceTree = "<group>"; };
+		1349E3FC167E7DA400183059 /* SSActivityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSActivityViewController.h; sourceTree = "<group>"; };
+		1349E3FD167E7DA400183059 /* SSActivityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSActivityViewController.m; sourceTree = "<group>"; };
+		1349E401167E7E1000183059 /* shareSDKConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shareSDKConstants.h; sourceTree = "<group>"; };
+		1349E402167E7E1000183059 /* shareSDKConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shareSDKConstants.m; sourceTree = "<group>"; };
+		1349E403167E7E1000183059 /* shareSDKDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shareSDKDefines.h; sourceTree = "<group>"; };
+		1349E406167E7E7D00183059 /* AlertUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertUtility.h; sourceTree = "<group>"; };
+		1349E407167E7E7D00183059 /* AlertUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertUtility.m; sourceTree = "<group>"; };
+		1349E410167E7FEF00183059 /* ShareSDKTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSDKTracker.h; sourceTree = "<group>"; };
+		1349E411167E7FEF00183059 /* ShareSDKTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSDKTracker.m; sourceTree = "<group>"; };
+		1349E417167E80C700183059 /* SSWebServiceConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSWebServiceConnector.h; sourceTree = "<group>"; };
+		1349E418167E80C700183059 /* SSWebServiceConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSWebServiceConnector.m; sourceTree = "<group>"; };
+		1349E419167E80C700183059 /* SSWebServiceConnectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSWebServiceConnectorDelegate.h; sourceTree = "<group>"; };
+		1349E41B167E818000183059 /* HTTPStatusCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStatusCodes.h; sourceTree = "<group>"; };
+		1349E41C167E873300183059 /* ShareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSDK.h; sourceTree = "<group>"; };
+		1349E41D167E873300183059 /* ShareSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSDK.m; sourceTree = "<group>"; };
+		1349E41F167E87B800183059 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1349E425167E87F000183059 /* ShareSDK-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShareSDK-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1349E429167E87F000183059 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1349E42D167E87F000183059 /* ShareSDK-Example-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShareSDK-Example-Info.plist"; sourceTree = "<group>"; };
+		1349E42F167E87F000183059 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1349E431167E87F000183059 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1349E433167E87F000183059 /* ShareSDK-Example-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareSDK-Example-Prefix.pch"; sourceTree = "<group>"; };
+		1349E434167E87F000183059 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1349E435167E87F000183059 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1349E437167E87F000183059 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		1349E439167E87F000183059 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		1349E43B167E87F000183059 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1349E43D167E87F000183059 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1349E43E167E87F000183059 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1349E441167E87F000183059 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		1349E449167E8CAD00183059 /* Sharing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sharing.png; sourceTree = "<group>"; };
+		1349E44C167E8F3A00183059 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		1349E44E167E8F3E00183059 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +99,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1349E3E7167E7CBB00183059 /* Foundation.framework in Frameworks */,
+				1349E420167E87B900183059 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1349E422167E87F000183059 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1349E427167E87F000183059 /* UIKit.framework in Frameworks */,
+				1349E428167E87F000183059 /* Foundation.framework in Frameworks */,
+				1349E42A167E87F000183059 /* CoreGraphics.framework in Frameworks */,
+				1349E448167E881400183059 /* libsharesdk-lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				1349E3E8167E7CBB00183059 /* sharesdk-lib */,
+				1349E42B167E87F000183059 /* ShareSDK-Example */,
 				1349E3E5167E7CBB00183059 /* Frameworks */,
 				1349E3E4167E7CBB00183059 /* Products */,
 			);
@@ -58,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				1349E3E3167E7CBB00183059 /* libsharesdk-lib.a */,
+				1349E425167E87F000183059 /* ShareSDK-Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				1349E3E6167E7CBB00183059 /* Foundation.framework */,
+				1349E41F167E87B800183059 /* UIKit.framework */,
+				1349E429167E87F000183059 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -73,8 +149,8 @@
 		1349E3E8167E7CBB00183059 /* sharesdk-lib */ = {
 			isa = PBXGroup;
 			children = (
-				1349E3EB167E7CBB00183059 /* sharesdk_lib.h */,
-				1349E3ED167E7CBB00183059 /* sharesdk_lib.m */,
+				1349E3FE167E7DAA00183059 /* SSActivityViewController */,
+				1349E3F5167E7CEA00183059 /* ShareSDK */,
 				1349E3E9167E7CBB00183059 /* Supporting Files */,
 			);
 			path = "sharesdk-lib";
@@ -84,8 +160,115 @@
 			isa = PBXGroup;
 			children = (
 				1349E3EA167E7CBB00183059 /* sharesdk-lib-Prefix.pch */,
+				1349E401167E7E1000183059 /* shareSDKConstants.h */,
+				1349E402167E7E1000183059 /* shareSDKConstants.m */,
+				1349E403167E7E1000183059 /* shareSDKDefines.h */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1349E3F5167E7CEA00183059 /* ShareSDK */ = {
+			isa = PBXGroup;
+			children = (
+				1349E41C167E873300183059 /* ShareSDK.h */,
+				1349E41D167E873300183059 /* ShareSDK.m */,
+				1349E40F167E7FA000183059 /* Tracker */,
+				1349E416167E7FFD00183059 /* Model */,
+				1349E405167E7E6F00183059 /* Utility */,
+			);
+			name = ShareSDK;
+			sourceTree = "<group>";
+		};
+		1349E3FE167E7DAA00183059 /* SSActivityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1349E3FC167E7DA400183059 /* SSActivityViewController.h */,
+				1349E3FD167E7DA400183059 /* SSActivityViewController.m */,
+			);
+			name = SSActivityViewController;
+			sourceTree = "<group>";
+		};
+		1349E405167E7E6F00183059 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				1349E40D167E7E8100183059 /* Alert Utility */,
+				1349E40E167E7E8900183059 /* Web Service Connector */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		1349E40D167E7E8100183059 /* Alert Utility */ = {
+			isa = PBXGroup;
+			children = (
+				1349E406167E7E7D00183059 /* AlertUtility.h */,
+				1349E407167E7E7D00183059 /* AlertUtility.m */,
+			);
+			name = "Alert Utility";
+			sourceTree = "<group>";
+		};
+		1349E40E167E7E8900183059 /* Web Service Connector */ = {
+			isa = PBXGroup;
+			children = (
+				1349E417167E80C700183059 /* SSWebServiceConnector.h */,
+				1349E418167E80C700183059 /* SSWebServiceConnector.m */,
+				1349E419167E80C700183059 /* SSWebServiceConnectorDelegate.h */,
+				1349E41B167E818000183059 /* HTTPStatusCodes.h */,
+			);
+			name = "Web Service Connector";
+			sourceTree = "<group>";
+		};
+		1349E40F167E7FA000183059 /* Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				1349E410167E7FEF00183059 /* ShareSDKTracker.h */,
+				1349E411167E7FEF00183059 /* ShareSDKTracker.m */,
+			);
+			name = Tracker;
+			sourceTree = "<group>";
+		};
+		1349E416167E7FFD00183059 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1349E42B167E87F000183059 /* ShareSDK-Example */ = {
+			isa = PBXGroup;
+			children = (
+				1349E434167E87F000183059 /* AppDelegate.h */,
+				1349E435167E87F000183059 /* AppDelegate.m */,
+				1349E43D167E87F000183059 /* ViewController.h */,
+				1349E43E167E87F000183059 /* ViewController.m */,
+				1349E440167E87F000183059 /* ViewController.xib */,
+				1349E44B167E8CB300183059 /* Images */,
+				1349E42C167E87F000183059 /* Supporting Files */,
+			);
+			path = "ShareSDK-Example";
+			sourceTree = "<group>";
+		};
+		1349E42C167E87F000183059 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1349E42D167E87F000183059 /* ShareSDK-Example-Info.plist */,
+				1349E42E167E87F000183059 /* InfoPlist.strings */,
+				1349E431167E87F000183059 /* main.m */,
+				1349E433167E87F000183059 /* ShareSDK-Example-Prefix.pch */,
+				1349E437167E87F000183059 /* Default.png */,
+				1349E439167E87F000183059 /* Default@2x.png */,
+				1349E43B167E87F000183059 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1349E44B167E8CB300183059 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1349E44C167E8F3A00183059 /* Icon.png */,
+				1349E44E167E8F3E00183059 /* Icon@2x.png */,
+				1349E449167E8CAD00183059 /* Sharing.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,6 +290,24 @@
 			productName = "sharesdk-lib";
 			productReference = 1349E3E3167E7CBB00183059 /* libsharesdk-lib.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		1349E424167E87F000183059 /* ShareSDK-Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1349E443167E87F000183059 /* Build configuration list for PBXNativeTarget "ShareSDK-Example" */;
+			buildPhases = (
+				1349E421167E87F000183059 /* Sources */,
+				1349E422167E87F000183059 /* Frameworks */,
+				1349E423167E87F000183059 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1349E447167E881000183059 /* PBXTargetDependency */,
+			);
+			name = "ShareSDK-Example";
+			productName = "ShareSDK-Example";
+			productReference = 1349E425167E87F000183059 /* ShareSDK-Example.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -130,20 +331,81 @@
 			projectRoot = "";
 			targets = (
 				1349E3E2167E7CBB00183059 /* sharesdk-lib */,
+				1349E424167E87F000183059 /* ShareSDK-Example */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1349E423167E87F000183059 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1349E430167E87F000183059 /* InfoPlist.strings in Resources */,
+				1349E438167E87F000183059 /* Default.png in Resources */,
+				1349E43A167E87F000183059 /* Default@2x.png in Resources */,
+				1349E43C167E87F000183059 /* Default-568h@2x.png in Resources */,
+				1349E442167E87F000183059 /* ViewController.xib in Resources */,
+				1349E44A167E8CAD00183059 /* Sharing.png in Resources */,
+				1349E44D167E8F3A00183059 /* Icon.png in Resources */,
+				1349E44F167E8F3E00183059 /* Icon@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1349E3DF167E7CBB00183059 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1349E3EE167E7CBB00183059 /* sharesdk_lib.m in Sources */,
+				1349E3FF167E7DD300183059 /* SSActivityViewController.m in Sources */,
+				1349E404167E7E1300183059 /* shareSDKConstants.m in Sources */,
+				1349E40B167E7E7D00183059 /* AlertUtility.m in Sources */,
+				1349E414167E7FEF00183059 /* ShareSDKTracker.m in Sources */,
+				1349E41A167E80C700183059 /* SSWebServiceConnector.m in Sources */,
+				1349E41E167E873300183059 /* ShareSDK.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1349E421167E87F000183059 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1349E432167E87F000183059 /* main.m in Sources */,
+				1349E436167E87F000183059 /* AppDelegate.m in Sources */,
+				1349E43F167E87F000183059 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1349E447167E881000183059 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1349E3E2167E7CBB00183059 /* sharesdk-lib */;
+			targetProxy = 1349E446167E881000183059 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1349E42E167E87F000183059 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1349E42F167E87F000183059 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1349E440167E87F000183059 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1349E441167E87F000183059 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1349E3EF167E7CBB00183059 /* Debug */ = {
@@ -217,6 +479,31 @@
 			};
 			name = Release;
 		};
+		1349E444167E87F000183059 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareSDK-Example/ShareSDK-Example-Prefix.pch";
+				INFOPLIST_FILE = "ShareSDK-Example/ShareSDK-Example-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1349E445167E87F000183059 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareSDK-Example/ShareSDK-Example-Prefix.pch";
+				INFOPLIST_FILE = "ShareSDK-Example/ShareSDK-Example-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -234,6 +521,14 @@
 			buildConfigurations = (
 				1349E3F2167E7CBB00183059 /* Debug */,
 				1349E3F3167E7CBB00183059 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1349E443167E87F000183059 /* Build configuration list for PBXNativeTarget "ShareSDK-Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1349E444167E87F000183059 /* Debug */,
+				1349E445167E87F000183059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
