@@ -20,5 +20,5 @@
 + (void)start: (NSString*)applicationId;
 
 + (void)trackShare: (NSString*)name
-		 recipient: (NSString*)recipient;
+				 recipient: (NSString*)recipient;
 @end

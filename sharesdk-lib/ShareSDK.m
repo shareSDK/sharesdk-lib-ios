@@ -18,10 +18,10 @@
 }
 
 + (void)trackShare: (NSString*)name
-		 recipient: (NSString*)recipient
+				 recipient: (NSString*)recipient
 {
 	[ShareSDKTracker trackShare: name
-					  recipient: recipient];
+										recipient: recipient];
 }
 
 @end

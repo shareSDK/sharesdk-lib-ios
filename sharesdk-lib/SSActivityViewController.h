@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSActivityViewController : UIActivityViewController
+typedef enum _LinkShorteningBehavior {
+	LinkShorteningBehaviorNever,
+	LinkShorteningBehaviorAutomatic,
+	LinkShorteningBehaviorAlways,
+	LinkShorteningBehaviorCount
+} LinkShorteningBehavior;
 
+@interface SSActivityViewController : UIActivityViewController
++ (void)setLinkShorteningBehavior: (LinkShorteningBehavior)linkShorteningBehavior;
 @end

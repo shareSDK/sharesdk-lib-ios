@@ -68,8 +68,8 @@ static NSDictionary* defaultRequestHeaders = nil;
 }
 
 - (id)initWithURLString: (NSString*)urlString
-			 parameters: (NSDictionary*)parameters
-			   httpBody: (NSData*)httpBody
+						 parameters: (NSDictionary*)parameters
+							 httpBody: (NSData*)httpBody
 {
 	if ( self = [super init] )
 	{
@@ -83,78 +83,78 @@ static NSDictionary* defaultRequestHeaders = nil;
 }
 
 - (id)initWithPathString: (NSString*)pathString
-			  parameters: (NSDictionary*)parameters
-				httpBody: (NSData*)httpBody
+							parameters: (NSDictionary*)parameters
+								httpBody: (NSData*)httpBody
 {
-    NSString* generatedUrlString = [self.webServiceRoot stringByAppendingString: pathString];
+	NSString* generatedUrlString = [self.webServiceRoot stringByAppendingString: pathString];
 	return [self initWithURLString: generatedUrlString
-						parameters: parameters
-						  httpBody: httpBody];
+											parameters: parameters
+												httpBody: httpBody];
 }
 
 // Completion Handler
 - (id)initWithURLString: (NSString*)urlString
-			 parameters: (NSDictionary*)parameters
-			   httpBody: (NSData*)httpBody
+						 parameters: (NSDictionary*)parameters
+							 httpBody: (NSData*)httpBody
       completionHandler: (WebServiceConnectorCompletionHandler)completionHandler
 {
-    self = [self initWithURLString: urlString
-                        parameters: parameters
-                          httpBody: httpBody];
+	self = [self initWithURLString: urlString
+											parameters: parameters
+												httpBody: httpBody];
 	if ( self )
 	{
 		self.completionHandler = completionHandler;
 	}
-    
+	
 	return self;
 }
 
 - (id)initWithPathString: (NSString*)pathString
-			  parameters: (NSDictionary*)parameters
-				httpBody: (NSData*)httpBody
+							parameters: (NSDictionary*)parameters
+								httpBody: (NSData*)httpBody
        completionHandler: (WebServiceConnectorCompletionHandler)completionHandler
 {
-    self = [self initWithPathString: pathString
-                         parameters: parameters
-                           httpBody: httpBody];
-    if ( self )
-    {
-        self.completionHandler = completionHandler;
-    }
-    
-    return self;
+	self = [self initWithPathString: pathString
+											 parameters: parameters
+												 httpBody: httpBody];
+	if ( self )
+	{
+		self.completionHandler = completionHandler;
+	}
+	
+	return self;
 }
 
 - (id)initWithURLString: (NSString*)urlString
-			 parameters: (NSDictionary*)parameters
-			   httpBody: (NSData*)httpBody
-			   delegate: (id<SSWebServiceConnectorDelegate>)delegate
+						 parameters: (NSDictionary*)parameters
+							 httpBody: (NSData*)httpBody
+							 delegate: (id<SSWebServiceConnectorDelegate>)delegate
 {
-    self = [self initWithURLString: urlString
-                        parameters: parameters
-                          httpBody: httpBody];
+	self = [self initWithURLString: urlString
+											parameters: parameters
+												httpBody: httpBody];
 	if ( self )
 	{
 		self.delegate = delegate;
 	}
-    
+	
 	return self;
 }
 
 - (id)initWithPathString: (NSString*)pathString
-			  parameters: (NSDictionary*)parameters
-				httpBody: (NSData*)httpBody
-				delegate: (id<SSWebServiceConnectorDelegate>)delegate
+							parameters: (NSDictionary*)parameters
+								httpBody: (NSData*)httpBody
+								delegate: (id<SSWebServiceConnectorDelegate>)delegate
 {
-    self = [self initWithPathString: pathString
-                         parameters: parameters
-                           httpBody: httpBody];
-    if ( self )
-    {
-        self.delegate = delegate;
-    }
-    
-    return self;
+	self = [self initWithPathString: pathString
+											 parameters: parameters
+												 httpBody: httpBody];
+	if ( self )
+	{
+		self.delegate = delegate;
+	}
+	
+	return self;
 }
 
 - (void)dealloc
@@ -166,8 +166,8 @@ static NSDictionary* defaultRequestHeaders = nil;
 #pragma mark API
 - (void)start
 {
-    [[SSWebServiceConnector webServiceConnectorQueue] addObject: self];
-    [SSWebServiceConnector processQueue];
+	[[SSWebServiceConnector webServiceConnectorQueue] addObject: self];
+	[SSWebServiceConnector processQueue];
 }
 
 - (void)cancel
@@ -180,11 +180,11 @@ static NSDictionary* defaultRequestHeaders = nil;
 #pragma mark Private
 + (NSMutableArray*)webServiceConnectorQueue
 {
-    if ( webServiceConnectorQueue == nil )
-    {
-        webServiceConnectorQueue = [[NSMutableArray alloc] init];
-    }
-    return webServiceConnectorQueue;
+	if ( webServiceConnectorQueue == nil )
+	{
+		webServiceConnectorQueue = [[NSMutableArray alloc] init];
+	}
+	return webServiceConnectorQueue;
 }
 
 + (NSMutableArray*)activeConnectors
@@ -197,18 +197,18 @@ static NSDictionary* defaultRequestHeaders = nil;
 }
 
 + (void)processQueue
-{    
-    // If the maxConnectionCount == 0 we'll assume that no connection queueing is desired.
-    if ( ([SSWebServiceConnector connectionCount] < maxConnectionCount || maxConnectionCount == 0)
-        && [[SSWebServiceConnector webServiceConnectorQueue] count] )
-    {
-        SSWebServiceConnector* wsc = [[SSWebServiceConnector webServiceConnectorQueue] 
-                                    objectAtIndex: 0];
-        [wsc reallyStart];
+{
+	// If the maxConnectionCount == 0 we'll assume that no connection queueing is desired.
+	if ( ([SSWebServiceConnector connectionCount] < maxConnectionCount || maxConnectionCount == 0)
+			&& [[SSWebServiceConnector webServiceConnectorQueue] count] )
+	{
+		SSWebServiceConnector* wsc = [[SSWebServiceConnector webServiceConnectorQueue]
+																	objectAtIndex: 0];
+		[wsc reallyStart];
 		
-        [[SSWebServiceConnector webServiceConnectorQueue] removeObject: wsc];
+		[[SSWebServiceConnector webServiceConnectorQueue] removeObject: wsc];
 		[[SSWebServiceConnector activeConnectors] addObject: wsc];
-    }
+	}
 }
 
 - (void)reallyStart
@@ -219,12 +219,12 @@ static NSDictionary* defaultRequestHeaders = nil;
 	NSString* fullURLString = self.urlStringWithParameters;
 	
 	SS_LOG( @"WebServiceConnector: %@", fullURLString);
-    
+	
 	// Create the request.
 	NSURL* url = [NSURL URLWithString: fullURLString];
 	NSMutableURLRequest* theRequest = [NSMutableURLRequest requestWithURL: url
-															  cachePolicy: NSURLRequestUseProtocolCachePolicy
-														  timeoutInterval: 60.0];
+																														cachePolicy: NSURLRequestUseProtocolCachePolicy
+																												timeoutInterval: 60.0];
 	
 	if ( self.requestHeaderFields )
 		[theRequest setAllHTTPHeaderFields: self.requestHeaderFields];
@@ -236,9 +236,9 @@ static NSDictionary* defaultRequestHeaders = nil;
 	
 	// create the connection with the request
 	// and start loading the data
-	self.urlConnection = [NSURLConnection connectionWithRequest: theRequest 
-													   delegate: self];
-	if ( self.urlConnection ) 
+	self.urlConnection = [NSURLConnection connectionWithRequest: theRequest
+																										 delegate: self];
+	if ( self.urlConnection )
 	{
 		// Create the NSMutableData to hold the received data.
 		self.receivedData = [NSMutableData data];
@@ -248,17 +248,17 @@ static NSDictionary* defaultRequestHeaders = nil;
 		++connectionCount;
 		[[self class] didChangeValueForKey: @"connectionCount"];
 		
-		startTime = [NSDate timeIntervalSinceReferenceDate]; 
-	} 
-	else 
+		startTime = [NSDate timeIntervalSinceReferenceDate];
+	}
+	else
 	{
 		// Inform the user that the connection failed.
-        [self handleFailure: [NSError errorWithDomain: @"WebServiceConnectorErrorDomain"
-                                                 code: 0
-                                             userInfo: nil]];
-        
-        [SSWebServiceConnector processQueue]; // since this connection failed we can try to kick off others
-	}    
+		[self handleFailure: [NSError errorWithDomain: @"WebServiceConnectorErrorDomain"
+																						 code: 0
+																				 userInfo: nil]];
+		
+		[SSWebServiceConnector processQueue]; // since this connection failed we can try to kick off others
+	}
 }
 
 #pragma mark -
@@ -302,7 +302,7 @@ static NSDictionary* defaultRequestHeaders = nil;
 	
 	// Remove a trailing slash if there is not one.
 	if ( [webServiceRoot length]
-		&& [[webServiceRoot substringFromIndex: [webServiceRoot length] - 1] isEqual: @"/"] )
+			&& [[webServiceRoot substringFromIndex: [webServiceRoot length] - 1] isEqual: @"/"] )
 	{
 		webServiceRoot = [webServiceRoot substringToIndex: [webServiceRoot length] - 1];
 	}
@@ -325,12 +325,12 @@ static NSDictionary* defaultRequestHeaders = nil;
 #pragma mark Connection Queueing
 + (NSInteger)maxConnectionCount
 {
-    return maxConnectionCount;
+	return maxConnectionCount;
 }
 
 + (void)setMaxConnectionCount: (NSInteger)theMaxConnectionCount
 {
-    maxConnectionCount = theMaxConnectionCount;
+	maxConnectionCount = theMaxConnectionCount;
 }
 
 #pragma -
@@ -343,18 +343,18 @@ static NSDictionary* defaultRequestHeaders = nil;
 		NSUInteger parametersAdded = 0;
 		for ( NSString* key in self.parameters )
 		{
-            NSString* name = [[self class] reallyEncodeString: key];
-            NSString* vv = [self.parameters objectForKey: key];
-            NSString* value = [vv isKindOfClass: [NSString class]] ? vv : nil;
-            value = [[self class] reallyEncodeString: value];
-            
-            if ( name && value )
-            {
-                retStr = [retStr stringByAppendingFormat: @"%@%@=%@",
-                          parametersAdded++ == 0 ? @"?" : @"&",
-                          name,
-                          value];
-            }
+			NSString* name = [[self class] reallyEncodeString: key];
+			NSString* vv = [self.parameters objectForKey: key];
+			NSString* value = [vv isKindOfClass: [NSString class]] ? vv : nil;
+			value = [[self class] reallyEncodeString: value];
+			
+			if ( name && value )
+			{
+				retStr = [retStr stringByAppendingFormat: @"%@%@=%@",
+									parametersAdded++ == 0 ? @"?" : @"&",
+									name,
+									value];
+			}
 		}
 	}
 	
@@ -363,7 +363,7 @@ static NSDictionary* defaultRequestHeaders = nil;
 
 #pragma mark -
 #pragma mark NSURLConnection Delegate
-- (void)connection: (NSURLConnection*)connection 
+- (void)connection: (NSURLConnection*)connection
 didReceiveResponse: (NSURLResponse*)response
 {
 	if ( [response isKindOfClass: [NSHTTPURLResponse class]] )
@@ -378,29 +378,29 @@ didReceiveResponse: (NSURLResponse*)response
 	{
 		_statusCode = -1;
 	}
-    
 	
-    [self.receivedData setLength: 0];
+	
+	[self.receivedData setLength: 0];
 }
 
-- (void)connection: (NSURLConnection*)connection 
-	didReceiveData: (NSData*)data
+- (void)connection: (NSURLConnection*)connection
+		didReceiveData: (NSData*)data
 {
-    // Append the new data to receivedData.
-    [self.receivedData appendData: data];
+	// Append the new data to receivedData.
+	[self.receivedData appendData: data];
 }
 
 - (void)connection: (NSURLConnection*)connection
   didFailWithError: (NSError*)error
 {
-    // release the connection
-    self.urlConnection = nil;
+	// release the connection
+	self.urlConnection = nil;
 	self.receivedData = nil;
 	
-    // inform the user
-    SS_LOG(@"Connection failed! Error - %@ %@",
-           [error localizedDescription],
-           [[error userInfo] objectForKey: NSURLErrorFailingURLStringErrorKey]);
+	// inform the user
+	SS_LOG(@"Connection failed! Error - %@ %@",
+				 [error localizedDescription],
+				 [[error userInfo] objectForKey: NSURLErrorFailingURLStringErrorKey]);
 	
 	// Update the connectionCount
 	[[self class] willChangeValueForKey: @"connectionCount"];
@@ -408,8 +408,8 @@ didReceiveResponse: (NSURLResponse*)response
 	[[self class] didChangeValueForKey: @"connectionCount"];
 	
 	[self handleFailure: error];
-
-    [SSWebServiceConnector processQueue]; // since this connection failed we can try to kick off others
+	
+	[SSWebServiceConnector processQueue]; // since this connection failed we can try to kick off others
 	
 	// Clean up.
 	[[SSWebServiceConnector activeConnectors] removeObject: self];
@@ -419,23 +419,23 @@ didReceiveResponse: (NSURLResponse*)response
 {
 	responseTime = [NSDate timeIntervalSinceReferenceDate];
 	
-    //SS_LOG(@"Succeeded! Received %d bytes of data", [self.receivedData length]);
-    
+	//SS_LOG(@"Succeeded! Received %d bytes of data", [self.receivedData length]);
+	
 	if ( verboseOutput )
 	{
-		NSString* responseString = [[NSString alloc] initWithData: self.receivedData 
-														  encoding: NSUTF8StringEncoding];
+		NSString* responseString = [[NSString alloc] initWithData: self.receivedData
+																										 encoding: NSUTF8StringEncoding];
 		SS_LOG( @"responseString:\n%@", responseString );
 	}
 	
 	NSError* jsonError = nil;
 	id jsonResponse = [NSJSONSerialization JSONObjectWithData: self.receivedData
-													  options: 0
-														error: &jsonError];
+																										options: 0
+																											error: &jsonError];
 	
-    // release the connection, and the data object
-    self.urlConnection = nil;
-    self.receivedData = nil;
+	// release the connection, and the data object
+	self.urlConnection = nil;
+	self.receivedData = nil;
 	
 	// Update the connectionCount
 	[[self class] willChangeValueForKey: @"connectionCount"];
@@ -443,18 +443,18 @@ didReceiveResponse: (NSURLResponse*)response
 	[[self class] didChangeValueForKey: @"connectionCount"];
 	
 	if ( jsonResponse )//[responseString length] )
-	{			
+	{
 		[self handleSuccess: jsonResponse];
-        
+		
 		postParseTime = [NSDate timeIntervalSinceReferenceDate];
 	}
 	else
 	{
-        [self handleSuccess: [NSArray array]];
+		[self handleSuccess: [NSArray array]];
 	}
-    SS_LOG(@"[%@]response: %.5f - parse: %.5f", _urlString, responseTime - startTime, postParseTime - startTime);
-    
-    [SSWebServiceConnector processQueue]; // since this connection is done we can try to kick off others
+	SS_LOG(@"[%@]response: %.5f - parse: %.5f", _urlString, responseTime - startTime, postParseTime - startTime);
+	
+	[SSWebServiceConnector processQueue]; // since this connection is done we can try to kick off others
 	
 	// Clean up
 	[[SSWebServiceConnector activeConnectors] removeObject: self];
@@ -463,42 +463,46 @@ didReceiveResponse: (NSURLResponse*)response
 #pragma mark Utility
 + (NSString*)reallyEncodeString: (NSString*)unencodedString
 {
-    NSString* encodedString = (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                 (CFStringRef)unencodedString,
-                                                                                 NULL,
-                                                                                 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                                 kCFStringEncodingUTF8 ));
-    
-    return encodedString;
+	NSString* encodedString = (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+																																																 (CFStringRef)unencodedString,
+																																																 NULL,
+																																																 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+																																																 kCFStringEncodingUTF8 ));
+	
+	return encodedString;
 }
 
 #pragma mark Completion Handling
 - (void)handleSuccess: (id)result
 {
-    if ( self.completionHandler )
-    {
-        self.completionHandler(self, result, nil);
-    }
-    
-    if ( self.delegate )
-    {
-        [self.delegate webServiceConnector: self
-                       didFinishWithResult: result];
-    }
+	if ( self.completionHandler )
+	{
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+			self.completionHandler(self, result, nil);
+		});
+	}
+	
+	if ( self.delegate )
+	{
+		[self.delegate webServiceConnector: self
+									 didFinishWithResult: result];
+	}
 }
 
 - (void)handleFailure: (NSError*)error
 {
-    if ( self.completionHandler )
-    {
-        self.completionHandler(self, nil, error);
-    }
-    
-    if ( self.delegate )
-    {
-        [self.delegate webServiceConnector: self
-                          didFailWithError: error];
-    }
+	if ( self.completionHandler )
+	{
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+			self.completionHandler(self, nil, error);
+		});
+	}
+	
+	if ( self.delegate )
+	{
+		[self.delegate webServiceConnector: self
+											didFailWithError: error];
+	}
 }
 
 @end

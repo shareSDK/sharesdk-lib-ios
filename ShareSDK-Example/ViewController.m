@@ -11,7 +11,7 @@
 // Controllers
 #import "ShareSDK.h"
 
-#define SHARE_TEXT		@"Test Sharing"
+#define SHARE_TEXT		@"Take a look at http://games.slashdot.org/story/13/03/27/0044216/bioshock-infinite-released"
 #define SHARE_IMAGE		[UIImage imageNamed: @"Sharing.png"]
 
 @interface ViewController ()

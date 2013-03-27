@@ -29,8 +29,12 @@ extern NSString* const ShareSDKApplicationIDKey;
 
 // Tracking
 + (void)trackShare: (NSString*)name
-		 recipient: (NSString*)recipient;
+				 recipient: (NSString*)recipient;
 - (void)trackShare: (NSString*)name
-		 recipient: (NSString*)recipient;
+				 recipient: (NSString*)recipient;
+
+// URL Shortening
++ (NSDictionary*)shortenURLs: (NSArray*)urls;
+- (NSDictionary*)shortenURLs: (NSArray*)urls;
 
 @end

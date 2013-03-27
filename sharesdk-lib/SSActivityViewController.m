@@ -8,13 +8,28 @@
 
 #import "SSActivityViewController.h"
 
+// Tracker
 #import "ShareSDKTracker.h"
 
+// Categories
+#import "NSArray+SSBlocks.h"
+
+static LinkShorteningBehavior _linkShorteningBehavior = LinkShorteningBehaviorAutomatic;
+
+#define SS_SAFE_STRING(str)		([str isKindOfClass: [NSString class]] ? str : nil)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 @interface SSActivityViewController ()
 @property (nonatomic, copy) UIActivityViewControllerCompletionHandler shareSDKCompletionHandler;
 @property (nonatomic, copy) NSString* shareType;
 - (NSString*)shareTypeForActivityItems: (NSArray*)activityItems;
 - (NSString*)recipientForActivityType: (NSString*)activityType;
+
+// Link Shortening
++ (NSString*)shortenLinksIfNeeded: (NSString*)text;
++ (NSArray*)extractURLs: (NSString*)text;
++ (NSString*)replaceURLs: (NSDictionary*)urls
+									inText: (NSString*)text;
 @end
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,10 +38,19 @@
 @synthesize shareType=_shareType;
 
 - (id)initWithActivityItems: (NSArray*)activityItems
-	  applicationActivities: (NSArray*)applicationActivities
+			applicationActivities: (NSArray*)applicationActivities
 {
+	// Shorten Links
+	activityItems = [activityItems map: ^id(id obj) {
+		if ( [obj isKindOfClass: [NSString class]] )
+			return [[self class] shortenLinksIfNeeded: (NSString*)obj];
+		else
+			return obj;
+	}];
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////
 	self = [super initWithActivityItems: activityItems
-				  applicationActivities: applicationActivities];
+								applicationActivities: applicationActivities];
 	
 	if ( self )
 	{
@@ -59,7 +83,7 @@
 			// Track share
 			NSString* recipient = [self recipientForActivityType: activityType];
 			[[ShareSDKTracker sharedTracker] trackShare: self.shareType
-											  recipient: recipient];
+																				recipient: recipient];
 		}
 		
 		// Call supplied completion handler
@@ -119,6 +143,85 @@
 	}
 	
 	return recipient;
+}
+
+#pragma mark - Link Shortening
++ (void)setLinkShorteningBehavior: (LinkShorteningBehavior)linkShorteningBehavior
+{
+	_linkShorteningBehavior = linkShorteningBehavior;
+}
+
++ (NSString*)shortenLinksIfNeeded: (NSString*)text
+{
+	NSString* shortenedText = text;
+	
+	if ( _linkShorteningBehavior != LinkShorteningBehaviorNever )
+	{
+		NSArray* urls = [self extractURLs: text];
+		
+		// Send to server
+		NSDictionary* urlDict = [ShareSDKTracker shortenURLs: urls];
+		
+		shortenedText = [self replaceURLs: urlDict
+															 inText: text];
+	}
+	
+	return shortenedText;
+}
+
++ (NSArray*)extractURLs: (NSString*)text
+{
+	NSMutableArray* urls = [NSMutableArray array];
+	
+	if ( text )
+	{
+		NSDataDetector* linkDetector = [NSDataDetector dataDetectorWithTypes: NSTextCheckingTypeLink
+																																	 error: nil];
+		NSArray* matches = [linkDetector matchesInString: text
+																						 options: 0
+																							 range: NSMakeRange(0, text.length)];
+		
+		urls = [NSMutableArray arrayWithCapacity: matches.count];
+		for ( NSTextCheckingResult* match in matches )
+		{
+			if ( [match resultType] == NSTextCheckingTypeLink )
+			{
+				NSString* urlString = [[match URL] absoluteString];
+				if ( urlString )
+					[urls addObject: urlString];
+			}
+		}
+	}
+	
+	return urls;
+}
+
++ (NSString*)replaceURLs: (NSDictionary*)urls
+									inText: (NSString*)text
+{
+	NSString* replacedText = text;
+	
+	for ( NSString* originalURL in urls )
+	{
+		NSString* shortURL = SS_SAFE_STRING(urls[originalURL]);
+		
+		if ( _linkShorteningBehavior == LinkShorteningBehaviorAutomatic )
+		{
+			if ( shortURL != nil
+					&& originalURL.length > shortURL.length )
+			{
+				replacedText = [replacedText stringByReplacingOccurrencesOfString: originalURL
+																															 withString: shortURL];
+			}
+		}
+		else if ( _linkShorteningBehavior == LinkShorteningBehaviorAlways )
+		{
+			replacedText = [replacedText stringByReplacingOccurrencesOfString: originalURL
+																														 withString: shortURL];
+		}
+	}
+	
+	return replacedText;
 }
 
 @end

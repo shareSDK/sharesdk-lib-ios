@@ -30,6 +30,7 @@
 		1349E44A167E8CAD00183059 /* Sharing.png in Resources */ = {isa = PBXBuildFile; fileRef = 1349E449167E8CAD00183059 /* Sharing.png */; };
 		1349E44D167E8F3A00183059 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1349E44C167E8F3A00183059 /* Icon.png */; };
 		1349E44F167E8F3E00183059 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1349E44E167E8F3E00183059 /* Icon@2x.png */; };
+		13A0B0F617027C17008766E9 /* NSArray+SSBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A0B0F517027C17008766E9 /* NSArray+SSBlocks.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		1349E449167E8CAD00183059 /* Sharing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sharing.png; sourceTree = "<group>"; };
 		1349E44C167E8F3A00183059 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		1349E44E167E8F3E00183059 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		13A0B0F417027C17008766E9 /* NSArray+SSBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SSBlocks.h"; sourceTree = "<group>"; };
+		13A0B0F517027C17008766E9 /* NSArray+SSBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SSBlocks.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +196,8 @@
 			children = (
 				1349E40D167E7E8100183059 /* Alert Utility */,
 				1349E40E167E7E8900183059 /* Web Service Connector */,
+				13A0B0F417027C17008766E9 /* NSArray+SSBlocks.h */,
+				13A0B0F517027C17008766E9 /* NSArray+SSBlocks.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				1349E414167E7FEF00183059 /* ShareSDKTracker.m in Sources */,
 				1349E41A167E80C700183059 /* SSWebServiceConnector.m in Sources */,
 				1349E41E167E873300183059 /* ShareSDK.m in Sources */,
+				13A0B0F617027C17008766E9 /* NSArray+SSBlocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +492,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShareSDK-Example/ShareSDK-Example-Prefix.pch";
 				INFOPLIST_FILE = "ShareSDK-Example/ShareSDK-Example-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -499,6 +509,10 @@
 				GCC_PREFIX_HEADER = "ShareSDK-Example/ShareSDK-Example-Prefix.pch";
 				INFOPLIST_FILE = "ShareSDK-Example/ShareSDK-Example-Info.plist";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -523,6 +537,7 @@
 				1349E3F3167E7CBB00183059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1349E443167E87F000183059 /* Build configuration list for PBXNativeTarget "ShareSDK-Example" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +546,7 @@
 				1349E445167E87F000183059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
