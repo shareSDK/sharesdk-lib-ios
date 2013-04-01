@@ -14,7 +14,10 @@ typedef enum _LinkShorteningBehavior {
 	LinkShorteningBehaviorAlways,
 	LinkShorteningBehaviorCount
 } LinkShorteningBehavior;
+typedef void (^SSLinkReplacementHandler)(NSString* shortenedText);
 
 @interface SSActivityViewController : UIActivityViewController
 + (void)setLinkShorteningBehavior: (LinkShorteningBehavior)linkShorteningBehavior;
++ (void)shortenLinksIfNeeded: (NSString*)text
+			 withCompletionHandler: (SSLinkReplacementHandler)completionHandler;
 @end

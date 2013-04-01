@@ -11,9 +11,6 @@
 // Tracker
 #import "ShareSDKTracker.h"
 
-// Categories
-#import "NSArray+SSBlocks.h"
-
 static LinkShorteningBehavior _linkShorteningBehavior = LinkShorteningBehaviorAutomatic;
 
 #define SS_SAFE_STRING(str)		([str isKindOfClass: [NSString class]] ? str : nil)
@@ -26,7 +23,6 @@ static LinkShorteningBehavior _linkShorteningBehavior = LinkShorteningBehaviorAu
 - (NSString*)recipientForActivityType: (NSString*)activityType;
 
 // Link Shortening
-+ (NSString*)shortenLinksIfNeeded: (NSString*)text;
 + (NSArray*)extractURLs: (NSString*)text;
 + (NSString*)replaceURLs: (NSDictionary*)urls
 									inText: (NSString*)text;
@@ -40,15 +36,6 @@ static LinkShorteningBehavior _linkShorteningBehavior = LinkShorteningBehaviorAu
 - (id)initWithActivityItems: (NSArray*)activityItems
 			applicationActivities: (NSArray*)applicationActivities
 {
-	// Shorten Links
-	activityItems = [activityItems map: ^id(id obj) {
-		if ( [obj isKindOfClass: [NSString class]] )
-			return [[self class] shortenLinksIfNeeded: (NSString*)obj];
-		else
-			return obj;
-	}];
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////////
 	self = [super initWithActivityItems: activityItems
 								applicationActivities: applicationActivities];
 	
@@ -151,22 +138,32 @@ static LinkShorteningBehavior _linkShorteningBehavior = LinkShorteningBehaviorAu
 	_linkShorteningBehavior = linkShorteningBehavior;
 }
 
-+ (NSString*)shortenLinksIfNeeded: (NSString*)text
++ (void)shortenLinksIfNeeded: (NSString*)text
+			 withCompletionHandler: (SSLinkReplacementHandler)completionHandler
 {
-	NSString* shortenedText = text;
-	
 	if ( _linkShorteningBehavior != LinkShorteningBehaviorNever )
 	{
 		NSArray* urls = [self extractURLs: text];
 		
-		// Send to server
-		NSDictionary* urlDict = [ShareSDKTracker shortenURLs: urls];
-		
-		shortenedText = [self replaceURLs: urlDict
-															 inText: text];
+		[ShareSDKTracker shortenURLs: urls
+					 withCompletionHandler: ^(NSDictionary* shortURLs, NSError* error) {
+						 if ( shortURLs )
+						 {
+							 NSString* shortText = [self replaceURLs: shortURLs
+																								inText: text];
+							 completionHandler(shortText);
+						 }
+						 else
+						 {
+							 completionHandler(text);
+						 }
+		}];
 	}
-	
-	return shortenedText;
+	else
+	{
+		// Do nothing, just return the same text
+		completionHandler(text);
+	}
 }
 
 + (NSArray*)extractURLs: (NSString*)text

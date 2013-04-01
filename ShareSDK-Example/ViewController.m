@@ -31,9 +31,10 @@
 #pragma mark - Actions
 - (IBAction)shareText: (id)sender
 {
-	[self shareItems: @[
-	 SHARE_TEXT
-	]];
+	[SSActivityViewController shortenLinksIfNeeded: SHARE_TEXT
+													 withCompletionHandler: ^(NSString* shortenedText) {
+														 [self shareItems: @[shortenedText]];
+													 }];
 }
 
 - (IBAction)shareImage: (id)sender

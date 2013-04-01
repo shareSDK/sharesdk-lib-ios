@@ -477,9 +477,9 @@ didReceiveResponse: (NSURLResponse*)response
 {
 	if ( self.completionHandler )
 	{
-		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+		// dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 			self.completionHandler(self, result, nil);
-		});
+		// });
 	}
 	
 	if ( self.delegate )
@@ -493,9 +493,9 @@ didReceiveResponse: (NSURLResponse*)response
 {
 	if ( self.completionHandler )
 	{
-		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+		// dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 			self.completionHandler(self, nil, error);
-		});
+		// });
 	}
 	
 	if ( self.delegate )

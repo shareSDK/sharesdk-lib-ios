@@ -94,16 +94,16 @@ static NSString* _applicationId = nil;
 }
 
 #pragma mark - URL Shortening
-+ (NSDictionary*)shortenURLs: (NSArray*)urls
++ (void)shortenURLs: (NSArray*)urls
+withCompletionHandler: (SSURLShortenerCompletionHandler)completionHandler;
 {
-	return [[[self class] sharedTracker] shortenURLs: urls];
+	[[[self class] sharedTracker] shortenURLs: urls
+											withCompletionHandler: completionHandler];
 }
 
-- (NSDictionary*)shortenURLs: (NSArray*)urls
-{
-	__block NSDictionary* _shortURLs = @{};
-	__block BOOL _requestFinished = NO;
-	
+- (void)shortenURLs: (NSArray*)urls
+withCompletionHandler: (SSURLShortenerCompletionHandler)completionHandler
+{	
 	NSDictionary* params = @{ @"a": self.applicationId, @"u": self.uniqueId };
 	NSData* httpBody = [NSJSONSerialization dataWithJSONObject: @{@"urls": urls}
 																										 options: 0
@@ -116,13 +116,16 @@ static NSString* _applicationId = nil;
 	 initWithURLString: @"http://www.sharesdk.com/api/v1/shorten.json"
 	 parameters: params
 	 httpBody: httpBody
-	 completionHandler: ^(SSWebServiceConnector* wsc, id result, NSError*error) {
+	 completionHandler: ^(SSWebServiceConnector* wsc, id result, NSError* error) {
 		 if ( [result isKindOfClass: [NSDictionary class]] )
 		 {
-			 _shortURLs = [(NSDictionary*)result copy];
+			 NSDictionary* shortURLs = (NSDictionary*)result;
+			 completionHandler(shortURLs, nil);
 		 }
-		 
-		 _requestFinished = YES;
+		 else
+		 {
+			 completionHandler(nil, error);
+		 }
 	 }];
 	
 	// Kick off the request
@@ -132,14 +135,6 @@ static NSString* _applicationId = nil;
 		wsc.httpMethod = @"POST";
 		[wsc start];
 	}
-	
-	while ( !_requestFinished )
-	{
-		[[NSRunLoop currentRunLoop] runMode: NSRunLoopCommonModes
-														 beforeDate: [NSDate distantFuture]];
-	}
-	
-	return _shortURLs;
 }
 
 #pragma mark -

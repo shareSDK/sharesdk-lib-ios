@@ -13,6 +13,8 @@
 
 extern NSString* const ShareSDKApplicationIDKey;
 
+typedef void (^SSURLShortenerCompletionHandler)(NSDictionary* shortenedURLs, NSError* error);
+
 @interface ShareSDKTracker : NSObject <SSWebServiceConnectorDelegate>
 {
 }
@@ -34,7 +36,9 @@ extern NSString* const ShareSDKApplicationIDKey;
 				 recipient: (NSString*)recipient;
 
 // URL Shortening
-+ (NSDictionary*)shortenURLs: (NSArray*)urls;
-- (NSDictionary*)shortenURLs: (NSArray*)urls;
++ (void)shortenURLs: (NSArray*)urls
+withCompletionHandler: (SSURLShortenerCompletionHandler)completionHandler;
+- (void)shortenURLs: (NSArray*)urls
+withCompletionHandler: (SSURLShortenerCompletionHandler)completionHandler;
 
 @end
