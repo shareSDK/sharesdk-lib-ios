@@ -68,11 +68,38 @@ static NSString* _applicationId = nil;
 - (void)trackShare: (NSString*)name
 				 recipient: (NSString*)recipient
 {
+	[self trackShare: name
+				 recipient: recipient
+		 sharedLinkIds: nil];
+}
+
++ (void)trackShare: (NSString*)name
+				 recipient: (NSString*)recipient
+		 sharedLinkIds: (NSArray*)sharedLinkIds
+{
+	[[[self class] sharedTracker] trackShare: name
+																 recipient: recipient
+														 sharedLinkIds: sharedLinkIds];
+}
+
+- (void)trackShare: (NSString*)name
+				 recipient: (NSString*)recipient
+		 sharedLinkIds: (NSArray*)sharedLinkIds;
+{
 	if ( name == nil )
 		name = @"Unknown";
 	
 	if ( recipient == nil )
 		recipient = @"Unknown";
+	
+	NSData* httpBody = nil;
+	if ( sharedLinkIds.count )
+	{
+		NSDictionary* links = @{@"links": sharedLinkIds};
+		httpBody = [NSJSONSerialization dataWithJSONObject: links
+																							 options: nil
+																								 error: nil];
+	}
 	
 	NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
 													self.applicationId, @"a",
@@ -83,11 +110,12 @@ static NSString* _applicationId = nil;
 	SSWebServiceConnector* wsc = [[SSWebServiceConnector alloc]
 																initWithURLString: @"http://www.sharesdk.com/track_share"
 																parameters: params
-																httpBody: nil
+																httpBody: httpBody
 																delegate: self];
 	
 	if ( wsc )
 	{
+		wsc.requestHeaderFields = @{@"Content-Type": @"application/json"};
 		wsc.httpMethod = @"POST";
 		[wsc start];
 	}

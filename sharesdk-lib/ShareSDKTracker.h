@@ -34,6 +34,12 @@ typedef void (^SSURLShortenerCompletionHandler)(NSDictionary* shortenedURLs, NSE
 				 recipient: (NSString*)recipient;
 - (void)trackShare: (NSString*)name
 				 recipient: (NSString*)recipient;
++ (void)trackShare: (NSString*)name
+				 recipient: (NSString*)recipient
+		 sharedLinkIds: (NSArray*)sharedLinkIds;
+- (void)trackShare: (NSString*)name
+				 recipient: (NSString*)recipient
+		 sharedLinkIds: (NSArray*)sharedLinkIds;
 
 // URL Shortening
 + (void)shortenURLs: (NSArray*)urls

@@ -26,6 +26,10 @@ static LinkShorteningBehavior _linkShorteningBehavior = LinkShorteningBehaviorAu
 + (NSArray*)extractURLs: (NSString*)text;
 + (NSString*)replaceURLs: (NSDictionary*)urls
 									inText: (NSString*)text;
+
+// Track shortened links
+@property	NSArray* sharedLinkIds;
+- (void)buildSharedLinkIdsForActivityItems: (NSArray*)activityItems;
 @end
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,6 +48,8 @@ static LinkShorteningBehavior _linkShorteningBehavior = LinkShorteningBehaviorAu
 		// Setup the share type
 		for ( id activityItem in activityItems )
 			SS_LOG(@"activityItem: %@", activityItem);
+		
+		[self buildSharedLinkIdsForActivityItems: activityItems];
 		
 		for ( id applicationActivity in applicationActivities )
 			SS_LOG(@"applicationActivity: %@", applicationActivity);
@@ -67,10 +73,12 @@ static LinkShorteningBehavior _linkShorteningBehavior = LinkShorteningBehaviorAu
 	super.completionHandler = ^(NSString* activityType, BOOL completed){
 		if ( completed )
 		{
+			
 			// Track share
 			NSString* recipient = [self recipientForActivityType: activityType];
 			[[ShareSDKTracker sharedTracker] trackShare: self.shareType
-																				recipient: recipient];
+																				recipient: recipient
+																		sharedLinkIds: self.sharedLinkIds];
 		}
 		
 		// Call supplied completion handler
@@ -219,6 +227,40 @@ static LinkShorteningBehavior _linkShorteningBehavior = LinkShorteningBehaviorAu
 	}
 	
 	return replacedText;
+}
+
+#pragma mark -
+- (void)buildSharedLinkIdsForActivityItems: (NSArray*)activityItems
+{
+	NSMutableArray* strings = [NSMutableArray array];
+	
+	// Pull strings for all of the activity items.
+	for ( id activityItem in activityItems )
+	{
+		if ( [activityItem isKindOfClass: [NSString class]] )
+			[strings addObject: activityItem];
+		else if ( [activityItem isKindOfClass: [NSURL class]] )
+			[strings addObject: [(NSURL*)activityItem absoluteString]];
+	}
+	
+	NSMutableArray* linkIds = [NSMutableArray arrayWithCapacity: strings.count];
+	NSRegularExpression* regex = [NSRegularExpression
+																regularExpressionWithPattern: @"(?<=[http|https]?://shr.rs/)[0-9A-Za-z]+"
+																options: 0
+																error: NULL];
+	for ( NSString* string in strings )
+	{
+		NSArray* matches = [regex matchesInString: string
+																			options: 0
+																				range: NSMakeRange(0, string.length)];
+		for ( NSTextCheckingResult* match in matches )
+		{
+			NSString* substring = [string substringWithRange: match.range];			
+			[linkIds addObject: substring];
+		}
+	}
+	
+	self.sharedLinkIds = linkIds;
 }
 
 @end
