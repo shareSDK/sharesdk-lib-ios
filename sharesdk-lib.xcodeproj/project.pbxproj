@@ -494,6 +494,7 @@
 				INFOPLIST_FILE = "ShareSDK-Example/ShareSDK-Example-Info.plist";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
