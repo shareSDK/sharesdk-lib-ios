@@ -7,6 +7,7 @@
 //
 
 #import "SSActivityViewController.h"
+#import "shareSDKDefines.h"
 
 // Tracker
 #import "ShareSDKTracker.h"

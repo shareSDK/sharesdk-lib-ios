@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>22B8C25A-D55F-4506-A63D-C401F2665433</string>
+	<key>IDESourceControlProjectName</key>
+	<string>sharesdk-lib</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>78B121B0-4D82-4724-B91E-69739A62663F</key>
+		<string>ssh://github.com/shareSDK/sharesdk-lib-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>sharesdk-lib.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>78B121B0-4D82-4724-B91E-69739A62663F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/shareSDK/sharesdk-lib-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>78B121B0-4D82-4724-B91E-69739A62663F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>78B121B0-4D82-4724-B91E-69739A62663F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>sharesdk-lib-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

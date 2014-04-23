@@ -9,6 +9,7 @@
 #import "SSWebServiceConnector.h"
 #import "SSWebServiceConnectorDelegate.h"
 
+#import "shareSDKDefines.h"
 #import "HTTPStatusCodes.h"
 
 static BOOL verboseOutput = NO;

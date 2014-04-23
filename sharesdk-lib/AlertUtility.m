@@ -7,6 +7,7 @@
 //
 
 #import "AlertUtility.h"
+#import "shareSDKDefines.h"
 
 static BOOL alertVisible = NO;
 

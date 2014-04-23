@@ -7,7 +7,7 @@
 //
 
 #import "ShareSDKTracker.h"
-
+#import "shareSDKDefines.h"
 //
 #import "SSWebServiceConnector.h"
 
